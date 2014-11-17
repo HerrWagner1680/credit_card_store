@@ -2,10 +2,12 @@
 
 one:
   user_id: 1
-  product_name: MyString
-  quantity: 1
+  product_id: 1
+  quantity: MyString
+  integer: MyString
 
 two:
   user_id: 1
-  product_name: MyString
-  quantity: 1
+  product_id: 1
+  quantity: MyString
+  integer: MyString

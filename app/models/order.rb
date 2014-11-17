@@ -1,5 +1,5 @@
 class Order < ActiveRecord::Base
-	has_one: user
-	has_one: card
-	has_many: products
+	belongs_to :card
+	belongs_to :product
+
 end
