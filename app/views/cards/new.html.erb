@@ -1,0 +1,8 @@
+<h1>Cards#new</h1>
+<p>Find me in app/views/cards/new.html.erb</p>
+
+<%= form_for @user do |f| %>
+  <%= f.text_field :card_number, placeholder: 'card number' %>
+  <%= f.datetime :expiration_date, placeholder: 'expiration date' %>
+  <%= f.submit %>
+<% end %>

@@ -1,0 +1,19 @@
+<h1>Products#index</h1>
+<p>Find me in app/views/products/index.html.erb</p>
+
+<h1>ALL PRODUCTS</h1>
+
+<% if @products %>
+<ul>
+  <% @products.each do |product| %>
+    <li class="product">
+      <p>
+        Product: <%= product.product_name %>
+      </p>
+      <small>inventory_id: <%= product.inventory_id %></small>
+      <a href="#">BUY PRODUCT</a>
+      <p>quantity dropdown menu on confirmation page?</p>
+    </li>
+  <% end %>
+</ul>
+<% end %>
