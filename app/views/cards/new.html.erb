@@ -2,7 +2,8 @@
 <p>Find me in app/views/cards/new.html.erb</p>
 
 <h2>ADD A NEW CREDIT CARD</h2>
-<%= form_for [@user, @card] do |f| %>
+
+<%= form_for [@current_user, @card] do |f| %>
   <%= f.text_field :card_number, placeholder: 'card number' %>
   <%= f.date_select :expiration, placeholder: 'expiration date' %>
   <%= f.submit %>

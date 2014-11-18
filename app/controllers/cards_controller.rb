@@ -1,15 +1,12 @@
 class CardsController < ApplicationController
   def new
-  	@user = User.find(params[:user_id])
     current_user # returns @current_user
     @card = Card.new
   end
 
   def create
-  	@card = Card.new
-  	@card = Card.new(card_number: params[:card][:card_number],
-                   expiration: params[:card][:expiration],
-                   user_id: params[:card][:user_id])
+  	@card = Card.new(card_params)
+  	@card.user_id = session[:user_id]
     if @card.save
       flash[:notice] = "Signup Complete"
     else
@@ -25,5 +22,9 @@ class CardsController < ApplicationController
   def destroy
   end
 
+private
+def card_params
+	params.require(:card).permit(:card_number, :expiration)
+end
 
 end

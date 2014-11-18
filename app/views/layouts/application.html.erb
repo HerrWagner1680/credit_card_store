@@ -9,8 +9,15 @@
 <body>
 <h4>WEEK SIX CREDIT_CARD_STORE</h4>
 
+<% if @current_user %>
 <a href="/users/show">user account</a>
+<% end %>
+
 <a href="/products/">list of products</a>
+
+<% if @current_user %>
+<%= link_to ("logout"), "/users/#{@current_user.id}", method: :delete %>
+<% end %>
 
 <%= yield %>
 

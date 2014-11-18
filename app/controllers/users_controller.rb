@@ -1,15 +1,11 @@
 class UsersController < ApplicationController
   def index
-    @users = User.all
-    @user = User.find(params[:id])
     current_user #removed second end following this line 
+
   end
 
   def create
-    @user = User.new(email: params[:user][:email],
-                   password: params[:user][:password],
-                   fname: params[:user][:fname],
-                   lname: params[:user][:lname])
+    @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
       flash[:notice] = "Signup Complete"
@@ -25,7 +21,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
     current_user # returns @current_user
   end
 
@@ -41,6 +36,13 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    session[:user_id] =  nil
+    redirect_to "/users"
   end
+
+private  
+def user_params
+  params.require(:user).permit(:password, :email, :fname, :lname)
+end
 
 end
