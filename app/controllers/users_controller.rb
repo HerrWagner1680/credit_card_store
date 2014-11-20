@@ -22,6 +22,7 @@ class UsersController < ApplicationController
 
   def show
     current_user # returns @current_user
+    @cards = Card.where(user_id: session[:user_id])
   end
 
   def update
