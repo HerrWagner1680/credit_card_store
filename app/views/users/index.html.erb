@@ -4,7 +4,7 @@
 <% if @current_user%>
 <h1>Logged in as:</h1>
 <h1><%= "#{@current_user.fname} #{@current_user.lname}" %></h1>
-
+<%= image_tag @current_user.avatar.url(:thumb) %>
 
 <% else %>
 <h2>LOGIN PAGE</h2>

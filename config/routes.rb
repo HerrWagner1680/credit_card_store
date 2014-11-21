@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'users#index'
-
+  resources :charges
   resources :sessions
   resources :orders
   resources :products
