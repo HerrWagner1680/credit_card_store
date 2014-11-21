@@ -10,10 +10,10 @@ class CardsController < ApplicationController
     if @card.save
       flash[:notice] = "Signup Complete"
     else
-      flash[:alert] = "Unsuccessful Signup"
+      flash[:alert] = @card.errors.full_messages
     end
 
-    redirect_to "/users"
+    redirect_to "/users/#{@card.user_id}"
   end
 
   def edit
@@ -24,7 +24,7 @@ class CardsController < ApplicationController
 
 private
 def card_params
-	params.require(:card).permit(:card_number, :expiration)
+	params.require(:card).permit(:card_number, :expiration, :avatar)
 end
 
 end

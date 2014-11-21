@@ -1,15 +1,14 @@
 
+<a href="/products/">list of products</a>
 
-<h1>Logged in as:</h1>
-<h1><%= "#{@current_user.fname} #{@current_user.lname}" %></h1>
+<h2>USER ACCOUNT === <%= "#{@current_user.fname} #{@current_user.lname}" %></h2>
+<%= image_tag @user.avatar.url(:thumb) %>
 
 <a href=<%= "/users/#{@current_user.id}/cards/new" %>>ADD NEW CARDS</a>
 
-<h4>list of current cards</h4>
-<h5>put xxxs over most of card except last 4 digits</h5>
+<h4>======list of <%="#{@current_user.fname}"%>'s current cards=======</h4>
 
 <% if @cards %>
-<h4><%= p @cards %>=======@cards ==================</h4>
 <% @cards.each do |card| %>
 
 <h4><%= "x"*10 %><%= card.card_number.to_s[-4..-1]%><h4>

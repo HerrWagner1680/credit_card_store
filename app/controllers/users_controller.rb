@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   def index
     current_user #removed second end following this line 
-
   end
 
   def create
@@ -10,18 +9,25 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       flash[:notice] = "Signup Complete"
     else
-      flash[:alert] = "Unsuccessful Signup"
+      flash[:alert] = @user.errors.full_messages
     end
 
-    redirect_to "/users"
+    redirect_to "/users/#{@user.id}"
   end
 
   def new
     @user = User.new
   end
 
+  def edit
+    current_user # returns @current_user
+    @user = User.find(params[:id])
+    @cards = Card.where(user_id: session[:user_id])
+  end
+
   def show
     current_user # returns @current_user
+    @user = User.find(params[:id])
     @cards = Card.where(user_id: session[:user_id])
   end
 
@@ -30,7 +36,7 @@ class UsersController < ApplicationController
     if @user.update(params[:user])
       flash[:notice] = "Successfully Updated User"
     else
-      flash[:alert] = "did not update user"
+      flash[:alert] = @user.errors.full_messages
     end
 
     redirect_to "/users"
@@ -43,7 +49,7 @@ class UsersController < ApplicationController
 
 private  
 def user_params
-  params.require(:user).permit(:password, :email, :fname, :lname)
+  params.require(:user).permit(:password, :email, :fname, :lname, :avatar)
 end
 
 end

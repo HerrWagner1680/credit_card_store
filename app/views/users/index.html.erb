@@ -1,9 +1,10 @@
 
+<a href="/products/">list of products</a>
+
 <% if @current_user%>
 <h1>Logged in as:</h1>
 <h1><%= "#{@current_user.fname} #{@current_user.lname}" %></h1>
 
-<a href=<%= "/users/#{@current_user.id}/cards/new" %>>ADD NEW CARDS</a>
 
 <% else %>
 <h2>LOGIN PAGE</h2>

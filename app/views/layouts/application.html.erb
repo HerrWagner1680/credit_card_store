@@ -7,13 +7,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<h4>WEEK SIX CREDIT_CARD_STORE</h4>
 
-<% if @current_user %>
-<a href="/users/show">user account</a>
+<% if @current_user%>
+<h4>Logged in as: <%= "#{@current_user.fname} #{@current_user.lname}" %></h4>
 <% end %>
 
-<a href="/products/">list of products</a>
+<br>
+<% if @current_user %>
+<a href=<%="/users/#{session[:user_id]}"%>>user account</a>
+<% end %>
 
 <% if @current_user %>
 <%= link_to ("logout"), "/users/#{@current_user.id}", method: :delete %>
@@ -22,4 +24,5 @@
 <%= yield %>
 
 </body>
+
 </html>
